@@ -1,6 +1,6 @@
 import psycopg2
-
-
+import logging
+logger = logging.getLogger(__name__)
 def load_env(path=".env"):
     """Lit le fichier .env (lignes CLE=VALEUR) et renvoie un dictionnaire."""
     values = {}
@@ -37,6 +37,7 @@ def create_table(conn):
             )
         """)
     conn.commit()
+    logger.info("Table attempts prête")
 
 
 def insert_attempts(conn, rows):
@@ -53,7 +54,7 @@ def clear_attempts(conn):
     with conn.cursor() as cur:
         cur.execute("TRUNCATE TABLE attempts RESTART IDENTITY")
     conn.commit()
-    
+
 if __name__ == "__main__":
     conn = get_connection()
     create_table(conn)

@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 from storage.db import get_connection
-
+import logging
+logger = logging.getLogger(__name__)
 
 def run_query(conn, sql):
     with conn.cursor() as cur:
@@ -20,7 +21,7 @@ def bar_chart(labels, values, title, subtitle, ylabel, filename):
     fig.tight_layout()
     fig.savefig(filename, dpi=150)
     plt.close(fig)
-    print(f"Graphique enregistré : {filename}")
+    logger.info("Graphique enregistré : %s", filename)
 
 
 def main():

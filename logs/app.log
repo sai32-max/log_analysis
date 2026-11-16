@@ -1,0 +1,10 @@
+2026-11-16 22:14:45,223 INFO main : 14129 événements utiles sur 65565 lignes
+2026-11-16 22:14:45,224 INFO main : 1906 IP à géolocaliser
+2026-11-16 22:22:48,346 WARNING main : 1 IP sans pays trouvé
+2026-11-16 22:22:48,387 INFO storage.db : Table attempts prête
+2026-11-16 22:22:49,717 INFO main : 14129 lignes enregistrées dans PostgreSQL
+2026-11-16 22:22:50,070 INFO main : 14129 événements utiles sur 65565 lignes
+2026-11-16 22:22:50,071 INFO main : 1906 IP à géolocaliser
+2026-11-16 22:30:55,076 WARNING main : 1 IP sans pays trouvé
+2026-11-16 22:30:55,117 INFO storage.db : Table attempts prête
+2026-11-16 22:30:56,476 INFO main : 14129 lignes enregistrées dans PostgreSQL

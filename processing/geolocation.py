@@ -1,6 +1,9 @@
 import json
+import logging
 import urllib.request
 from storage.db import load_env
+
+logger = logging.getLogger(__name__)
 
 
 def geo_location(ip: str):
@@ -12,7 +15,7 @@ def geo_location(ip: str):
         with urllib.request.urlopen(request, timeout=5) as response:
             data = json.loads(response.read().decode("utf-8"))
     except (OSError, json.JSONDecodeError) as e:
-        print(f"Erreur géolocalisation {ip} : {e}")
+        logger.error("Erreur géolocalisation %s : %s", ip, e)
         return None
     return data.get("country")
 
