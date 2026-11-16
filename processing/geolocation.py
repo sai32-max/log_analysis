@@ -1,12 +1,15 @@
 import json
 import urllib.request
+from storage.db import load_env
 
 
 def geo_location(ip: str):
     """Retourne le code pays (ex : 'FR') d'une IP, ou None si inconnu."""
+    token = load_env().get("IPINFO_TOKEN", "")
     url = f"https://ipinfo.io/{ip}/json"
+    request = urllib.request.Request(url, headers={"Authorization": f"Bearer {token}"})
     try:
-        with urllib.request.urlopen(url, timeout=5) as response:
+        with urllib.request.urlopen(request, timeout=5) as response:
             data = json.loads(response.read().decode("utf-8"))
     except (OSError, json.JSONDecodeError) as e:
         print(f"Erreur géolocalisation {ip} : {e}")
