@@ -49,7 +49,11 @@ def insert_attempts(conn, rows):
         )
     conn.commit()
 
-
+def clear_attempts(conn):
+    with conn.cursor() as cur:
+        cur.execute("TRUNCATE TABLE attempts RESTART IDENTITY")
+    conn.commit()
+    
 if __name__ == "__main__":
     conn = get_connection()
     create_table(conn)
